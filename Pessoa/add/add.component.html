@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>Adicionar Pessoas</h3>
+    </div>
+  </div>
+  <div class="card-body container">
+    <form method="post" #frm="ngForm" (ngSubmit)="enviar()">
+      <div class="form-group">
+        <label for="">Nome</label>
+        <input type="text" name="nome" id="nome" class="form-control" 
+        placeholder="Nome" required/>
+      </div>
+      <div class="form-group">
+        <label for="">Apelido</label
+        ><input type="text" name="apelido" id="apelido" class="form-control" 
+        placeholder="Apelido" required/>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-danger"  
+      [disabled]="frm.invalid"
+      >Adicionar</button>
+    </form>
+  </div>
+</div>
