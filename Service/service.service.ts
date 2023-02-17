@@ -20,4 +20,16 @@ export class ServiceService {
   addPessoa(pessoa: Pessoa) {
     return this.http.post<Pessoa>(this.url_post_add, pessoa);
   }
+
+  getPessoaId(id: number) {
+    return this.http.get<Pessoa>(this.url + '/' + id);
+  }
+
+  updatePessoa(pessoa: Pessoa) {
+    return this.http.put<Pessoa>(this.url + '/' + pessoa.id, pessoa);
+  }
+
+  deletePessoa(pessoa: Pessoa) {
+    return this.http.delete<Pessoa>(this.url + '/' + pessoa.id);
+  }
 }

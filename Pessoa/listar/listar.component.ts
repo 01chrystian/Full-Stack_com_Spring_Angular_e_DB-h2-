@@ -9,15 +9,23 @@ import { ServiceService } from 'src/app/Service/service.service';
   styleUrls: ['./listar.component.css'],
 })
 export class ListarComponent implements OnInit {
-  
-  constructor(private service: ServiceService, private router: Router) {  }
+  constructor(private service: ServiceService, private router: Router) {}
 
   pessoas!: Pessoa[];
-  
-  ngOnInit() { 
-    this.service.getPessoas()
-    .subscribe(data => {
-      this.pessoas=data;
-    })
-   }
+
+  ngOnInit() {
+    this.service.getPessoas().subscribe((data) => {
+      this.pessoas = data;
+    });
+  }
+  Editar(pessoa: Pessoa) {
+    localStorage.setItem('id', pessoa.id.toString());
+    this.router.navigate(['edit']);
+  }
+  Delete(pessoa: Pessoa) {
+    this.service.deletePessoa(pessoa).subscribe((data) => {
+      this.pessoas = this.pessoas.filter((p) => p !== pessoa);
+      alert('Usuário deletado!');
+    });
+  }
 }
